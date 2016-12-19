@@ -5,14 +5,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params.require(:user).permit(:email, :password, :password_confirmation))
-    debugger
+    @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'success'
-      # redirect_to new_session_path
       redirect_to root_path
     else
-      # render action: :new
       render 'new'
     end
   end
@@ -20,7 +17,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:email,:password,:password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end
 
