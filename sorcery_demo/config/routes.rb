@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/help', to: 'welcomes#help', as: 'helf'
   get '/contact', to: 'welcomes#contact'
   get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
   resources :users
   resources :sessions
