@@ -27,7 +27,20 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+   config.action_mailer.smtp_settings = {
+    :address        => "smtp.qq.com", # default: localhost
+    :port           => 25,                  # default: 25
+    :user_name      => '3133818517',
+    :password       => 'long123456',
+    :authentication => :plain                 # :plain, :login or :cram_md5
+  }
+
+  # host = 'example.com' # 不要原封不动使用这个域名,
+  # 应该使用你本地的开发主机地址
+  # comonfig.action_mailer.default_url_options = { host: host, protocol: 'https' }
 
   config.action_mailer.perform_caching = false
 

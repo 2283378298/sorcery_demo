@@ -1,19 +1,17 @@
 class WelcomesController < ApplicationController
-  # def index
-  #   str="lkl"
-  # end
 
-  # def help
-  #   h=1
-  # end
+  def home
+    if logged_in?
+      @micropost = current_user.microposts.build
+      @feed_items = current_user.feed.paginate(page: params[:page])
+    end
+  end
 
-  # def about
-  #   arr=[2,3,4]
-  # end
+  def help
+  end
 
-
- # def about
- # end
+  def about
+  end
 
   def contact
   end
